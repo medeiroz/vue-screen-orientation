@@ -1,6 +1,6 @@
 {
   "name": "vue-screen-orientation",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Get easy and reactive access to the Direction, Version and Angle of your screen with vue.js.",
   "author": "medeirosDev",
   "repository": {

@@ -82,7 +82,7 @@
 
   export default {
     name: 'app',
-    mixins: [VueScreenOrientation.VueScreenOrientationMixin(VueScreenOrientation.VSO_USE_TYPE.AUTO)],
+    mixins: [VueScreenOrientation.mixin(VueScreenOrientation.VSO_USE_TYPE.AUTO)],
     computed: {
       VSO_USE_TYPE() {
         return VueScreenOrientation.VSO_USE_TYPE;

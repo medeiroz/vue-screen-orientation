@@ -67,7 +67,7 @@ const options = { vsoUse: VueScreenOrientation.VSO_USE_TYPE.AUTO }
 
 export default {
     ...
-    mixins: [VueScreenOrientation.VueScreenOrientationMixin(options)],
+    mixins: [VueScreenOrientation.mixin(options)],
     ...
 }
 
@@ -75,7 +75,7 @@ export default {
 
 export default {
     ...
-    mixins: [VueScreenOrientation.VueScreenOrientationMixin()],
+    mixins: [VueScreenOrientation.mixin()],
     ...
 }
 
