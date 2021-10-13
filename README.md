@@ -1,6 +1,6 @@
 # vue-screen-orientation
 
-Get easy and reactive access to the width and height of your screen.
+Get easy and reactive access to the Orientation of your screen.
 
 <p align="left">
   <a href="https://www.npmjs.com/package/vue-screen-orientation"><img src="https://img.shields.io/npm/v/vue-screen-orientation.svg" alt="NPM Version"></a>
