@@ -26,10 +26,6 @@
   "browser": {
     "./sfc": "src/vue-screen-orientation.vue"
   },
-  "files": [
-    "./src",
-    "./dist"
-  ],
   "dependencies": {
     "screen-orientation-2": "^1.0"
   },
