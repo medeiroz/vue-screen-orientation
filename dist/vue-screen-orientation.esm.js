@@ -23,7 +23,7 @@ function mixin (options) {
     data: function data() {
       return {
         // AUTO use ORIENTATION by default if ORIENTATION not suported then use WINDOW
-        vsoUse: options.vsoUse || VSO_USE_TYPE.AUTO,
+        vsoUse: (options && options.vsoUse) ? options.vsoUse : VSO_USE_TYPE.AUTO,
       }
     },
     computed: {
