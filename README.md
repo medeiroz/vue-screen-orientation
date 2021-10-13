@@ -85,7 +85,7 @@ export default {
 ### Options of `vsoUse`
 
 | name | description |
-|--------|------------|-------------|
+|--------|------------|
 | VSO_USE_TYPE.`AUTO` | Orientation behavior is defined by default `VSO_TYPE.ORIENTATION` if supported. If not supported, `VSO_TYPE.WINDOW` is used |
 | VSO_USE_TYPE.`ORIENTATION` | Use window.screen.orientation object to get informations |
 | VSO_USE_TYPE.`WINDOW` | Calculate de informations based on window's sizes |
