@@ -1,9 +1,5 @@
 import Vue from 'vue'
-import {
-  getScreenOrientation,
-  addEventOnOrientationChange,
-  removeEventOnOrientationChange
-} from 'screen-orientation'
+const screenOrientation = require('screen-orientation-2')
 
 const reactiveComponent = new Vue({
   data() {
@@ -15,33 +11,64 @@ const reactiveComponent = new Vue({
   }
 })
 
-export default {
-  computed: {
-    $vsoDirection() {
-        return reactiveComponent.vsoDirection || getScreenOrientation().direction || 'portrait'
-    },
-    $vsoVersion() {
-        return reactiveComponent.vsoVersion || getScreenOrientation().version || 'primary'
-    },
-    $vsoAngle() {
-      return reactiveComponent.vsoAngle || getScreenOrientation().angle || 0
-    },
-  },
-  methods: {
-    handleOrientationChage(newOrientation) {
-      reactiveComponent.vsoDirection = newOrientation.direction
-      reactiveComponent.vsoVersion = newOrientation.version
-      reactiveComponent.vsoAngle = newOrientation.angle
-    },
+const VSO_USE_TYPE = {
+  AUTO: 'AUTO',
+  ORIENTATION: 'ORIENTATION',
+  WINDOW: 'WINDOW',
+};
 
-    $vsoDestroyListener() {
-      removeEventOnOrientationChange()
+export { VSO_USE_TYPE }
+
+export default (options) => {
+  return {
+    data() {
+      return {
+        // AUTO use ORIENTATION by default if ORIENTATION not suported then use WINDOW
+        vsoUse: options.vsoUse || VSO_USE_TYPE.AUTO,
+      }
     },
-  },
-  mounted() {
-    addEventOnOrientationChange(this.handleOrientationChage)
-  },
-  destroyed() {
-    removeEventOnOrientationChange()
+    computed: {
+      $vsoDirection() {
+          return reactiveComponent.vsoDirection || screenOrientation.getScreenOrientation().direction || 'portrait'
+      },
+      $vsoVersion() {
+          return reactiveComponent.vsoVersion || screenOrientation.getScreenOrientation().version || 'primary'
+      },
+      $vsoAngle() {
+        return reactiveComponent.vsoAngle || screenOrientation.getScreenOrientation().angle || 0
+      },
+    },
+    methods: {
+      handleOrientationChage(newOrientation) {
+        reactiveComponent.vsoDirection = newOrientation.direction
+        reactiveComponent.vsoVersion = newOrientation.version
+        reactiveComponent.vsoAngle = newOrientation.angle
+      },
+  
+      $vsoDestroyListener() {
+        screenOrientation.removeEventOnOrientationChange()
+      },
+    },
+    destroyed() {
+      screenOrientation.removeEventOnOrientationChange()
+    },
+    watch: {
+      vsoUse: {
+        immediate: true,
+        handler() {
+          screenOrientation.removeEventOnOrientationChange()
+          switch(this.vsoUse) {
+            case VSO_USE_TYPE.WINDOW:
+              screenOrientation.setUseWindowSize()
+              break;
+            case VSO_USE_TYPE.ORIENTATION:
+              screenOrientation.setUseOrientation()
+              break;
+          }
+          this.handleOrientationChage(screenOrientation.getScreenOrientation())
+          screenOrientation.addEventOnOrientationChange(this.handleOrientationChage)
+        },
+      }
+    }
   }
 }

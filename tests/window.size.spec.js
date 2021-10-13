@@ -1,8 +1,8 @@
 import { createLocalVue, shallowMount  } from '@vue/test-utils'
-import VueScreenOrientation from '../../src'
+import VueScreenOrientation from '../src'
 
 const localVue = createLocalVue()
-localVue.use(VueScreenOrientation)
+localVue.use(VueScreenOrientation, {vsoUse: VueScreenOrientation.VSO_USE_TYPE.WINDOW})
 
 const screenComponent = {
   template: '<div>Hello Wolrd</div>',
@@ -11,12 +11,7 @@ const screenComponent = {
 let wrapper
 let events = {}
 
-afterEach(() => {
-  wrapper.vm.$vsoDestroyListener()
-})
-
 beforeEach(() => {
-  delete global.screen;
   events = {}
   global.addEventListener = (event, callback) => {
     events[event] = callback;
@@ -43,6 +38,7 @@ describe('With window size', () => {
     expect(wrapper.vm.$vsoDirection).toEqual('landscape')
     expect(wrapper.vm.$vsoVersion).toEqual('primary')
     expect(wrapper.vm.$vsoAngle).toEqual(0)
+    expect(wrapper.vm.vsoUse).toEqual(VueScreenOrientation.VSO_USE_TYPE.WINDOW)
   })
   
   test('Rotate left', async () => {

@@ -1,8 +1,8 @@
 import { createLocalVue, shallowMount  } from '@vue/test-utils'
-import VueScreenOrientation from '../../src'
+import VueScreenOrientation from '../src'
 
 const localVue = createLocalVue()
-localVue.use(VueScreenOrientation)
+localVue.use(VueScreenOrientation, {vsoUse: VueScreenOrientation.VSO_USE_TYPE.ORIENTATION})
 
 const screenComponent = {
   template: '<div>Hello Wolrd</div>',
