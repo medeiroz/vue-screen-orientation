@@ -3,7 +3,7 @@
 Get easy and reactive access to the width and height of your screen.
 
 <p align="left">
-  <a href="https://www.npmjs.com/package/vue-screen-orientation"><img src="https://img.shields.io/npm/v/vue-screen-orientaion.svg" alt="NPM Version"></a>
+  <a href="https://www.npmjs.com/package/vue-screen-orientation"><img src="https://img.shields.io/npm/v/vue-screen-orientation.svg" alt="NPM Version"></a>
   <a href="https://www.npmjs.com/package/vue-screen-orientation"><img src="https://img.shields.io/npm/dm/vue-screen-orientation.svg" alt="NPM Downloads"></a>
   <a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
 </p>
