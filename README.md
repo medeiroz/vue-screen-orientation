@@ -10,11 +10,11 @@ Get easy and reactive access to the Orientation of your screen.
 
 ### Links
 
-[View demo](https://MedeirosDev.github.io/vue-screen-orientation/)
+[View demo](https://medeiroz.github.io/vue-screen-orientation/)
 
 [View on npm](https://www.npmjs.com/package/vue-screen-orientation)
 
-[View on GitHub](https://github.com/MedeirosDev/vue-screen-orientation)
+[View on GitHub](https://github.com/medeiroz/vue-screen-orientation)
 
 ### Install
 
